@@ -1,5 +1,7 @@
 package com.eazybytes.springsecOAUTH2GitHub.controller;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SecureController {
 
     @GetMapping("/")
-    public String main(OAuth2AuthenticationToken token) {
-        System.out.println(token.getPrincipal());
+    public String main(Authentication authentication) {
+        if (authentication instanceof UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken) {
+            System.out.println(usernamePasswordAuthenticationToken);
+        } else if (authentication instanceof OAuth2AuthenticationToken oauth2AuthenticationToken) {
+            System.out.println(oauth2AuthenticationToken);
+        }
         return "secure.html";
     }
 
