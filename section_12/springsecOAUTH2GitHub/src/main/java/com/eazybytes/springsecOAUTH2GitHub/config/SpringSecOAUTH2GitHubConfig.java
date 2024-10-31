@@ -7,7 +7,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.ClientRegistrations;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -20,6 +22,13 @@ public class SpringSecOAUTH2GitHubConfig {
                 .oauth2Login(Customizer.withDefaults());
         return http.build();
     }
+
+//    @Bean
+//    public ClientRegistrationRepository clientRepository() {
+//        ClientRegistration clientReg = clientRegistration();
+//        ClientRegistration clientRegistration = clientRegistration2();
+//        return new InMemoryClientRegistrationRepository(clientReg, clientRegistration);
+//    }
 
 //    @Bean
 //    public ClientRegistrationRepository clientRepository() {
